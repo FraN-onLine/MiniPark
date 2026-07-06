@@ -4,6 +4,23 @@ extends Control
 @onready var status_label: Label = $VBoxContainer/StatusLabel
 @onready var clear_button: Button = $VBoxContainer/HBoxContainer/ClearButton
 @onready var save_button: Button = $VBoxContainer/HBoxContainer/SaveButton
+@onready var name_edit: LineEdit = $VBoxContainer/NameRow/NameEdit
+@onready var name_color_picker: ColorPickerButton = $VBoxContainer/ColorRow/NameColorPicker
+@onready var custom_color_picker: ColorPickerButton = $VBoxContainer/PaletteRow/CustomColorPicker
+@onready var swatch_buttons: Array[Button] = [
+	$VBoxContainer/PaletteRow/Swatch1,
+	$VBoxContainer/PaletteRow/Swatch2,
+	$VBoxContainer/PaletteRow/Swatch3,
+	$VBoxContainer/PaletteRow/Swatch4,
+	$VBoxContainer/PaletteRow/Swatch5,
+	$VBoxContainer/PaletteRow/Swatch6,
+	$VBoxContainer/PaletteRow/Swatch7,
+	$VBoxContainer/PaletteRow/Swatch8,
+	$VBoxContainer/PaletteRow/Swatch9,
+	$VBoxContainer/PaletteRow/Swatch10,
+	$VBoxContainer/PaletteRow/Swatch11,
+	$VBoxContainer/PaletteRow/Swatch12,
+]
 
 const IMAGE_SIZE := 16
 const SAVE_FOLDER := "res://data/avatars/"
@@ -16,8 +33,6 @@ var texture: ImageTexture
 var drawing := false
 var brush_color := Color.BLACK
 var name_color := Color.WHITE
-var name_edit: LineEdit
-var name_color_picker: ColorPickerButton
 var palette_colors: Array[Color] = [
 	Color(0.12, 0.12, 0.12),
 	Color(1.0, 0.25, 0.25),
@@ -37,7 +52,7 @@ func _ready():
 
 	randomize()
 
-	_build_editor_ui()
+	_setup_scene_ui()
 	clear_button.pressed.connect(_on_clear_pressed)
 	save_button.pressed.connect(_on_save_pressed)
 
@@ -48,61 +63,38 @@ func _ready():
 
 	status_label.text = "Draw your little buddy!"
 
-func _build_editor_ui():
-	var container: VBoxContainer = $VBoxContainer
-	container.remove_child(preview)
-
-	var name_row := HBoxContainer.new()
-	name_row.alignment = BoxContainer.ALIGNMENT_CENTER
-	var name_label := Label.new()
-	name_label.text = "Name"
-	name_label.custom_minimum_size = Vector2(70, 0)
-	name_edit = LineEdit.new()
+func _setup_scene_ui():
 	name_edit.placeholder_text = "Buddy"
 	name_edit.text = "Buddy"
 	name_edit.max_length = 18
-	name_edit.custom_minimum_size = Vector2(220, 0)
-	name_row.add_child(name_label)
-	name_row.add_child(name_edit)
-	container.add_child(name_row)
-	container.move_child(name_row, 1)
-
-	var color_row := HBoxContainer.new()
-	color_row.alignment = BoxContainer.ALIGNMENT_CENTER
-	var color_label := Label.new()
-	color_label.text = "Name color"
-	color_label.custom_minimum_size = Vector2(90, 0)
-	name_color_picker = ColorPickerButton.new()
 	name_color_picker.color = name_color
 	name_color_picker.color_changed.connect(_on_name_color_changed)
-	color_row.add_child(color_label)
-	color_row.add_child(name_color_picker)
-	container.add_child(color_row)
-	container.move_child(color_row, 2)
+	custom_color_picker.color = brush_color
+	custom_color_picker.color_changed.connect(_on_custom_color_changed)
 
-	var palette_row := HBoxContainer.new()
-	palette_row.alignment = BoxContainer.ALIGNMENT_CENTER
-	var palette_label := Label.new()
-	palette_label.text = "Palette"
-	palette_label.custom_minimum_size = Vector2(70, 0)
-	palette_row.add_child(palette_label)
-	for color in palette_colors:
-		var swatch := Button.new()
-		swatch.custom_minimum_size = Vector2(28, 28)
-		swatch.modulate = color
-		swatch.text = " "
+	for index in range(min(swatch_buttons.size(), palette_colors.size())):
+		var color: Color = palette_colors[index]
+		var swatch: Button = swatch_buttons[index]
+		swatch.text = ""
+		swatch.flat = false
+		swatch.custom_minimum_size = Vector2(30, 30)
 		swatch.pressed.connect(_on_palette_button_pressed.bind(color))
-		palette_row.add_child(swatch)
-	var custom_picker := ColorPickerButton.new()
-	custom_picker.custom_minimum_size = Vector2(44, 32)
-	custom_picker.color = brush_color
-	custom_picker.color_changed.connect(_on_custom_color_changed)
-	palette_row.add_child(custom_picker)
-	container.add_child(palette_row)
-	container.move_child(palette_row, 3)
 
-	container.add_child(preview)
-	container.move_child(preview, 4)
+		var style := StyleBoxFlat.new()
+		style.bg_color = color
+		style.corner_radius_top_left = 4
+		style.corner_radius_top_right = 4
+		style.corner_radius_bottom_right = 4
+		style.corner_radius_bottom_left = 4
+		style.border_color = Color(1.0, 1.0, 1.0, 0.45)
+		style.border_width_left = 1
+		style.border_width_top = 1
+		style.border_width_right = 1
+		style.border_width_bottom = 1
+		swatch.add_theme_stylebox_override("normal", style)
+		swatch.add_theme_stylebox_override("hover", style)
+		swatch.add_theme_stylebox_override("pressed", style)
+		swatch.add_theme_stylebox_override("focus", style)
 
 func load_base_image():
 

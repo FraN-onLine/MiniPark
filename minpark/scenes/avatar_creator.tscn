@@ -31,6 +31,75 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 stretch_mode = 5
 
+[node name="NameRow" type="HBoxContainer" parent="VBoxContainer"]
+alignment = 1
+
+[node name="NameLabel" type="Label" parent="VBoxContainer/NameRow"]
+text = "Name"
+custom_minimum_size = Vector2(70, 0)
+
+[node name="NameEdit" type="LineEdit" parent="VBoxContainer/NameRow"]
+placeholder_text = "Buddy"
+text = "Buddy"
+max_length = 18
+custom_minimum_size = Vector2(220, 0)
+
+[node name="ColorRow" type="HBoxContainer" parent="VBoxContainer"]
+alignment = 1
+
+[node name="ColorLabel" type="Label" parent="VBoxContainer/ColorRow"]
+text = "Name color"
+custom_minimum_size = Vector2(90, 0)
+
+[node name="NameColorPicker" type="ColorPickerButton" parent="VBoxContainer/ColorRow"]
+custom_minimum_size = Vector2(180, 36)
+
+[node name="PaletteRow" type="HBoxContainer" parent="VBoxContainer"]
+alignment = 1
+
+[node name="PaletteLabel" type="Label" parent="VBoxContainer/PaletteRow"]
+text = "Palette"
+custom_minimum_size = Vector2(70, 0)
+
+[node name="Swatch1" type="Button" parent="VBoxContainer/PaletteRow"]
+custom_minimum_size = Vector2(30, 30)
+
+[node name="Swatch2" type="Button" parent="VBoxContainer/PaletteRow"]
+custom_minimum_size = Vector2(30, 30)
+
+[node name="Swatch3" type="Button" parent="VBoxContainer/PaletteRow"]
+custom_minimum_size = Vector2(30, 30)
+
+[node name="Swatch4" type="Button" parent="VBoxContainer/PaletteRow"]
+custom_minimum_size = Vector2(30, 30)
+
+[node name="Swatch5" type="Button" parent="VBoxContainer/PaletteRow"]
+custom_minimum_size = Vector2(30, 30)
+
+[node name="Swatch6" type="Button" parent="VBoxContainer/PaletteRow"]
+custom_minimum_size = Vector2(30, 30)
+
+[node name="Swatch7" type="Button" parent="VBoxContainer/PaletteRow"]
+custom_minimum_size = Vector2(30, 30)
+
+[node name="Swatch8" type="Button" parent="VBoxContainer/PaletteRow"]
+custom_minimum_size = Vector2(30, 30)
+
+[node name="Swatch9" type="Button" parent="VBoxContainer/PaletteRow"]
+custom_minimum_size = Vector2(30, 30)
+
+[node name="Swatch10" type="Button" parent="VBoxContainer/PaletteRow"]
+custom_minimum_size = Vector2(30, 30)
+
+[node name="Swatch11" type="Button" parent="VBoxContainer/PaletteRow"]
+custom_minimum_size = Vector2(30, 30)
+
+[node name="Swatch12" type="Button" parent="VBoxContainer/PaletteRow"]
+custom_minimum_size = Vector2(30, 30)
+
+[node name="CustomColorPicker" type="ColorPickerButton" parent="VBoxContainer/PaletteRow"]
+custom_minimum_size = Vector2(44, 32)
+
 [node name="StatusLabel" type="Label" parent="VBoxContainer"]
 text = "Paint over the white pixels."
 horizontal_alignment = 1
