@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://c2c11d4da7184"]
+
+[ext_resource type="Script" path="res://scripts/avatar_wanderer.gd" id="1_r3q7m"]
+
+[node name="AvatarInstance" type="CharacterBody2D"]
+script = ExtResource("1_r3q7m")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 0
+
+[node name="WanderTimer" type="Timer" parent="."]
+autostart = true
+wait_time = 1.2

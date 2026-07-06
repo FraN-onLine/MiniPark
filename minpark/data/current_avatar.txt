@@ -1,0 +1,3 @@
+res://data/avatars/shrek_1783358251.511_1525.png
+Shrek
+(1.0, 1.0, 1.0, 1.0)
