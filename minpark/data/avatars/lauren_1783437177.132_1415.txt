@@ -1,3 +1,0 @@
-Lauren
-(1.0, 1.0, 1.0, 1.0)
-res://data/avatars/lauren_1783437177.132_1415.png

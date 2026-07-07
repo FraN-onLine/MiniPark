@@ -1,8 +1,16 @@
-[gd_scene load_steps=2 format=3 uid="uid://b2a4e2c2f6d1b4c3d8e1a8b1c2d3e4f5"]
+[gd_scene format=3 uid="uid://c3rx3r26uhg1y"]
 
-[ext_resource type="Script" path="res://scripts/avatar_creator.gd" id="1_abc123"]
+[ext_resource type="Script" uid="uid://by0jfm1ywyd4i" path="res://scripts/avatar_creator.gd" id="1_abc123"]
 
-[node name="AvatarCreator" type="Control"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_d88xq"]
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 25
+corner_radius_top_right = 25
+corner_radius_bottom_right = 25
+corner_radius_bottom_left = 25
+
+[node name="AvatarCreator" type="Control" unique_id=453189934]
+layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -10,8 +18,8 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_abc123")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
-anchors_preset = 15
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=64330297]
+layout_mode = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 24.0
@@ -21,94 +29,137 @@ offset_bottom = -24.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Label" type="Label" parent="VBoxContainer"]
+[node name="Label" type="Label" parent="VBoxContainer" unique_id=1844952533]
+layout_mode = 2
 text = "Draw your little buddy"
 horizontal_alignment = 1
 
-[node name="AvatarPreview" type="TextureRect" parent="VBoxContainer"]
+[node name="AvatarPreview" type="TextureRect" parent="VBoxContainer" unique_id=494061946]
 custom_minimum_size = Vector2(256, 256)
+layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 stretch_mode = 5
 
-[node name="NameRow" type="HBoxContainer" parent="VBoxContainer"]
+[node name="NameRow" type="HBoxContainer" parent="VBoxContainer" unique_id=89358282]
+layout_mode = 2
 alignment = 1
 
-[node name="NameLabel" type="Label" parent="VBoxContainer/NameRow"]
+[node name="NameLabel" type="Label" parent="VBoxContainer/NameRow" unique_id=399150209]
+custom_minimum_size = Vector2(70, 0)
+layout_mode = 2
 text = "Name"
-custom_minimum_size = Vector2(70, 0)
 
-[node name="NameEdit" type="LineEdit" parent="VBoxContainer/NameRow"]
-placeholder_text = "Buddy"
-text = "Buddy"
-max_length = 18
+[node name="NameEdit" type="LineEdit" parent="VBoxContainer/NameRow" unique_id=596335120]
 custom_minimum_size = Vector2(220, 0)
+layout_mode = 2
+text = "Buddy"
+placeholder_text = "Buddy"
+max_length = 18
 
-[node name="ColorRow" type="HBoxContainer" parent="VBoxContainer"]
+[node name="ColorRow" type="HBoxContainer" parent="VBoxContainer" unique_id=492016481]
+layout_mode = 2
 alignment = 1
 
-[node name="ColorLabel" type="Label" parent="VBoxContainer/ColorRow"]
-text = "Name color"
+[node name="ColorLabel" type="Label" parent="VBoxContainer/ColorRow" unique_id=1110215626]
 custom_minimum_size = Vector2(90, 0)
+layout_mode = 2
+text = "Name color"
 
-[node name="NameColorPicker" type="ColorPickerButton" parent="VBoxContainer/ColorRow"]
+[node name="NameColorPicker" type="ColorPickerButton" parent="VBoxContainer/ColorRow" unique_id=853591837]
 custom_minimum_size = Vector2(180, 36)
+layout_mode = 2
 
-[node name="PaletteRow" type="HBoxContainer" parent="VBoxContainer"]
+[node name="PaletteRow" type="HBoxContainer" parent="VBoxContainer" unique_id=1030965079]
+layout_mode = 2
 alignment = 1
 
-[node name="PaletteLabel" type="Label" parent="VBoxContainer/PaletteRow"]
-text = "Palette"
+[node name="PaletteLabel" type="Label" parent="VBoxContainer/PaletteRow" unique_id=1282143528]
 custom_minimum_size = Vector2(70, 0)
+layout_mode = 2
+text = "Palette"
 
-[node name="Swatch1" type="Button" parent="VBoxContainer/PaletteRow"]
+[node name="Swatch1" type="Button" parent="VBoxContainer/PaletteRow" unique_id=1851302159]
 custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
 
-[node name="Swatch2" type="Button" parent="VBoxContainer/PaletteRow"]
+[node name="Swatch2" type="Button" parent="VBoxContainer/PaletteRow" unique_id=1347223434]
 custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
 
-[node name="Swatch3" type="Button" parent="VBoxContainer/PaletteRow"]
+[node name="Swatch3" type="Button" parent="VBoxContainer/PaletteRow" unique_id=1517491798]
 custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
 
-[node name="Swatch4" type="Button" parent="VBoxContainer/PaletteRow"]
+[node name="Swatch4" type="Button" parent="VBoxContainer/PaletteRow" unique_id=1477647031]
 custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
 
-[node name="Swatch5" type="Button" parent="VBoxContainer/PaletteRow"]
+[node name="Swatch5" type="Button" parent="VBoxContainer/PaletteRow" unique_id=1710102783]
 custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
 
-[node name="Swatch6" type="Button" parent="VBoxContainer/PaletteRow"]
+[node name="Swatch6" type="Button" parent="VBoxContainer/PaletteRow" unique_id=1949874937]
 custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
 
-[node name="Swatch7" type="Button" parent="VBoxContainer/PaletteRow"]
+[node name="Swatch7" type="Button" parent="VBoxContainer/PaletteRow" unique_id=927361314]
 custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
 
-[node name="Swatch8" type="Button" parent="VBoxContainer/PaletteRow"]
+[node name="Swatch8" type="Button" parent="VBoxContainer/PaletteRow" unique_id=1461912412]
 custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
 
-[node name="Swatch9" type="Button" parent="VBoxContainer/PaletteRow"]
+[node name="Swatch9" type="Button" parent="VBoxContainer/PaletteRow" unique_id=487870125]
 custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
 
-[node name="Swatch10" type="Button" parent="VBoxContainer/PaletteRow"]
+[node name="Swatch10" type="Button" parent="VBoxContainer/PaletteRow" unique_id=1016353128]
 custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
 
-[node name="Swatch11" type="Button" parent="VBoxContainer/PaletteRow"]
+[node name="Swatch11" type="Button" parent="VBoxContainer/PaletteRow" unique_id=998029063]
 custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
 
-[node name="Swatch12" type="Button" parent="VBoxContainer/PaletteRow"]
+[node name="Swatch12" type="Button" parent="VBoxContainer/PaletteRow" unique_id=46397544]
 custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
 
-[node name="CustomColorPicker" type="ColorPickerButton" parent="VBoxContainer/PaletteRow"]
+[node name="CustomColorPicker" type="ColorPickerButton" parent="VBoxContainer/PaletteRow" unique_id=563025058]
 custom_minimum_size = Vector2(44, 32)
+layout_mode = 2
 
-[node name="StatusLabel" type="Label" parent="VBoxContainer"]
+[node name="StatusLabel" type="Label" parent="VBoxContainer" unique_id=201508109]
+layout_mode = 2
 text = "Paint over the white pixels."
 horizontal_alignment = 1
 
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer" unique_id=1266473438]
+layout_mode = 2
 alignment = 1
 
-[node name="ClearButton" type="Button" parent="VBoxContainer/HBoxContainer"]
+[node name="ClearButton" type="Button" parent="VBoxContainer/HBoxContainer" unique_id=585145476]
+layout_mode = 2
 text = "Clear"
 
-[node name="SaveButton" type="Button" parent="VBoxContainer/HBoxContainer"]
+[node name="SaveButton" type="Button" parent="VBoxContainer/HBoxContainer" unique_id=2122755497]
+layout_mode = 2
 text = "Save and Enter Park"
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=2030988773]
+z_index = -3
+layout_mode = 0
+offset_right = 1170.0
+offset_bottom = 631.0
+mouse_filter = 2
+color = Color(0.2724816, 0.66316587, 0.63137203, 1)
+
+[node name="Panel" type="Panel" parent="." unique_id=75885702]
+layout_mode = 0
+offset_left = 892.0
+offset_top = 73.0
+offset_right = 1138.0
+offset_bottom = 590.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_d88xq")
