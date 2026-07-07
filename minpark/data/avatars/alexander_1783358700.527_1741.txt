@@ -1,0 +1,3 @@
+Alexander
+(0.6113, 0.668, 0.1096, 1.0)
+res://data/avatars/alexander_1783358700.527_1741.png

@@ -1,0 +1,3 @@
+Buddy
+(1.0, 1.0, 1.0, 1.0)
+res://data/avatars/buddy_1783437490.531_5667.png

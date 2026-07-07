@@ -34,6 +34,7 @@ func _physics_process(delta: float) -> void:
 		var bob: float = sin(wobble_time * 12.0) * 2.0
 		sprite.position = Vector2(0, -4 + bob)
 		sprite.rotation_degrees = lerp(sprite.rotation_degrees, direction.x * 4.0, 0.2)
+	_update_sprite_direction()
 	if global_position.x < 40 or global_position.x > 1110 or global_position.y < 40 or global_position.y > 608:
 		global_position.x = clamp(global_position.x, 40, 1110)
 		global_position.y = clamp(global_position.y, 40, 608)
@@ -54,7 +55,13 @@ func _pick_new_direction() -> void:
 	if direction.length() > 0.0:
 		direction = direction.normalized()
 	else:
-		direction = Vector2.RIGHT
+		direction = Vector2.LEFT
+
+func _update_sprite_direction() -> void:
+	if direction.x < 0.0:
+		sprite.scale.x = abs(sprite.scale.x)
+	elif direction.x > 0.0:
+		sprite.scale.x = -abs(sprite.scale.x)
 
 func create_name_label() -> void:
 	name_label = Label.new()
@@ -65,10 +72,28 @@ func create_name_label() -> void:
 	name_label.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
 	name_label.add_theme_font_override("font", load("res://Fonts/fusion-pixel-12px-monospaced-kr-latin-400-normal.ttf"))
 	name_label.add_theme_font_size_override("font_size", 14)
-	name_label.modulate = Color(1.0, 1.0, 1.0, 0.95)
+	name_label.modulate = Color(1.0, 1.0, 1.0, 1.0)
+	name_label.add_theme_color_override("font_color", Color.WHITE)
 	name_label.add_theme_color_override("font_outline_color", Color(0.0, 0.0, 0.0, 0.7))
 	name_label.add_theme_constant_override("outline_size", 2)
 	add_child(name_label)
+
+func _parse_color(value: String) -> Color:
+	var trimmed := value.strip_edges()
+	if trimmed.is_empty():
+		return Color.WHITE
+	if trimmed.begins_with("(") and trimmed.ends_with(")"):
+		var inner := trimmed.substr(1, trimmed.length() - 2)
+		var parts := inner.split(",", false)
+		if parts.size() >= 3:
+			var r := float(parts[0].strip_edges())
+			var g := float(parts[1].strip_edges())
+			var b := float(parts[2].strip_edges())
+			var a := 1.0
+			if parts.size() >= 4:
+				a = float(parts[3].strip_edges())
+			return Color(r, g, b, a)
+	return Color(trimmed)
 
 func load_avatar_name() -> void:
 	var metadata_path: String = "res://data/current_avatar.txt"
@@ -83,14 +108,17 @@ func load_avatar_name() -> void:
 			if data.size() > 0 and data[0].strip_edges().length() > 0 and not data[0].strip_edges().begins_with("user://") and not data[0].strip_edges().begins_with("res://"):
 				display_name = data[0].strip_edges()
 				if data.size() > 1 and data[1].strip_edges().length() > 0:
-					display_color = Color(data[1].strip_edges())
+					display_color = _parse_color(data[1].strip_edges())
 			else:
 				if data.size() > 1 and data[1].strip_edges().length() > 0:
 					display_name = data[1].strip_edges()
 				if data.size() > 2 and data[2].strip_edges().length() > 0:
-					display_color = Color(data[2].strip_edges())
+					display_color = _parse_color(data[2].strip_edges())
 	name_label.text = display_name
 	name_color = display_color
+	name_label.modulate = Color.WHITE
+	name_label.add_theme_color_override("font_color", Color.WHITE)
+	name_label.set("theme_override_colors/font_color", Color.WHITE)
 	name_label.modulate = name_color
 
 func load_avatar_texture() -> void:
