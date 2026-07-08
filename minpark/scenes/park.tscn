@@ -1,14 +1,15 @@
 [gd_scene format=3 uid="uid://s74mx22tx7ge"]
 
 [ext_resource type="Script" uid="uid://bupdidc7m4ov5" path="res://scripts/park.gd" id="1_park"]
+[ext_resource type="Texture2D" uid="uid://dgileaeix57nd" path="res://Lil Guys/BG.png" id="2_utnho"]
 
 [node name="Park" type="Node2D" unique_id=1248651913]
 script = ExtResource("1_park")
 
-[node name="Background" type="ColorRect" parent="." unique_id=1588065806]
+[node name="Background" type="TextureRect" parent="." unique_id=1097572813]
 offset_right = 1152.0
 offset_bottom = 648.0
-color = Color(0.16, 0.48, 0.24, 1)
+texture = ExtResource("2_utnho")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=425050800]
 anchor_mode = 0
@@ -42,6 +43,7 @@ text = "Created avatars:
 autowrap_mode = 3
 
 [node name="Barriers" type="Node2D" parent="." unique_id=1111087950]
+visible = false
 
 [node name="Barrier1" type="ColorRect" parent="Barriers" unique_id=394004321]
 offset_left = 240.0

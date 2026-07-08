@@ -1,4 +1,4 @@
-res://data/avatars/pennkachu_1783519401.286_5063.png
 Pennkachu
 (0.9297, 0.9248, 0.6137, 1.0)
+res://data/avatars/pennkachu_1783519401.286_5063.png
 res://Lil Guys/lil guy base.png
