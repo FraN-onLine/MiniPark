@@ -7,6 +7,8 @@ extends Control
 @onready var name_edit: LineEdit = $VBoxContainer/NameRow/NameEdit
 @onready var name_color_picker: ColorPickerButton = $VBoxContainer/ColorRow/NameColorPicker
 @onready var custom_color_picker: ColorPickerButton = $VBoxContainer/PaletteRow/CustomColorPicker
+@onready var base_button_1: TextureButton = $VBoxContainer/BaseButtons/BaseButton1
+@onready var base_button_2: TextureButton = $VBoxContainer/BaseButtons/BaseButton2
 @onready var swatch_buttons: Array[Button] = [
 	$VBoxContainer/PaletteRow/Swatch1,
 	$VBoxContainer/PaletteRow/Swatch2,
@@ -25,6 +27,8 @@ extends Control
 const IMAGE_SIZE := 16
 const SAVE_FOLDER := "res://data/avatars/"
 const MANIFEST_PATH := "res://data/avatars/manifest.txt"
+const BASE_1_PATH := "res://Lil Guys/lil guy base.png"
+const BASE_2_PATH := "res://Lil Guys/lil guy base 2.png"
 
 var image: Image
 var base_image: Image
@@ -33,6 +37,7 @@ var texture: ImageTexture
 var drawing := false
 var brush_color := Color.BLACK
 var name_color := Color.WHITE
+var selected_base_path: String = BASE_1_PATH
 var palette_colors: Array[Color] = [
 	Color(0.12, 0.12, 0.12),
 	Color(1.0, 0.25, 0.25),
@@ -64,6 +69,7 @@ func _ready():
 	status_label.text = "Draw your little buddy!"
 
 func _setup_scene_ui():
+	_apply_font_to_controls(self)
 	name_edit.placeholder_text = "Buddy"
 	name_edit.text = "Buddy"
 	name_edit.max_length = 18
@@ -71,6 +77,7 @@ func _setup_scene_ui():
 	name_color_picker.color_changed.connect(_on_name_color_changed)
 	custom_color_picker.color = brush_color
 	custom_color_picker.color_changed.connect(_on_custom_color_changed)
+	_setup_base_buttons()
 
 	for index in range(min(swatch_buttons.size(), palette_colors.size())):
 		var color: Color = palette_colors[index]
@@ -96,9 +103,51 @@ func _setup_scene_ui():
 		swatch.add_theme_stylebox_override("pressed", style)
 		swatch.add_theme_stylebox_override("focus", style)
 
+func _setup_base_buttons() -> void:
+	base_button_1.pressed.connect(_on_base_button_pressed.bind(BASE_1_PATH))
+	base_button_2.pressed.connect(_on_base_button_pressed.bind(BASE_2_PATH))
+	base_button_1.texture_normal = _make_button_texture(BASE_1_PATH, Color.WHITE)
+	base_button_2.texture_normal = _make_button_texture(BASE_2_PATH, Color(0.95, 0.95, 1.0))
+	base_button_1.texture_pressed = base_button_1.texture_normal
+	base_button_2.texture_pressed = base_button_2.texture_normal
+	base_button_1.texture_hover = base_button_1.texture_normal
+	base_button_2.texture_hover = base_button_2.texture_normal
+	base_button_1.stretch_mode = TextureButton.STRETCH_KEEP_ASPECT_CENTERED
+	base_button_2.stretch_mode = TextureButton.STRETCH_KEEP_ASPECT_CENTERED
+	base_button_1.custom_minimum_size = Vector2(96, 96)
+	base_button_2.custom_minimum_size = Vector2(96, 96)
+	_update_base_button_state()
+
+func _on_base_button_pressed(path: String) -> void:
+	selected_base_path = path
+	load_base_image()
+	_update_base_button_state()
+	status_label.text = "Base changed."
+
+func _update_base_button_state() -> void:
+	var selected := selected_base_path == BASE_1_PATH
+	base_button_1.modulate = Color.WHITE if selected else Color(0.72, 0.72, 0.72, 1.0)
+	base_button_2.modulate = Color.WHITE if not selected else Color(0.72, 0.72, 0.72, 1.0)
+
+func _make_button_texture(path: String, tint: Color) -> Texture2D:
+	var resource = load(path)
+	if resource is Texture2D:
+		var texture: Texture2D = resource as Texture2D
+		var img := texture.get_image().duplicate()
+		img.convert(Image.FORMAT_RGBA8)
+		for y in range(img.get_height()):
+			for x in range(img.get_width()):
+				var c = img.get_pixel(x, y)
+				if c.a > 0.0:
+					img.set_pixel(x, y, Color(c.r * tint.r, c.g * tint.g, c.b * tint.b, c.a))
+		return ImageTexture.create_from_image(img)
+	return preload("res://Lil Guys/lil guy base.png")
+
 func load_base_image():
 
-	var loaded_image = Image.load_from_file("res://Lil Guys/lil guy base.png")
+	var loaded_image = Image.load_from_file(selected_base_path)
+	if loaded_image == null or loaded_image.is_empty():
+		loaded_image = Image.load_from_file(BASE_1_PATH)
 
 	if loaded_image == null or loaded_image.is_empty():
 
@@ -228,6 +277,19 @@ func mouse_to_pixel(mouse:Vector2)->Vector2i:
 # SAVE / CLEAR
 ############################################################
 
+func _apply_font_to_controls(node: Node) -> void:
+	var font := load("res://Fonts/fusion-pixel-12px-monospaced-kr-latin-400-normal.ttf")
+	if node is Label:
+		(node as Label).add_theme_font_override("font", font)
+	elif node is LineEdit:
+		(node as LineEdit).add_theme_font_override("font", font)
+	elif node is Button:
+		(node as Button).add_theme_font_override("font", font)
+	elif node is ColorPickerButton:
+		(node as ColorPickerButton).add_theme_font_override("font", font)
+	for child in node.get_children():
+		_apply_font_to_controls(child)
+
 func _on_palette_button_pressed(color: Color):
 	brush_color = color
 	status_label.text = "Brush colour set."
@@ -275,12 +337,12 @@ func _on_save_pressed():
 	if meta == null:
 		status_label.text = "Couldn't save character data."
 		return
-	meta.store_string(avatar_name + "\n" + str(name_color) + "\n" + image_path)
+	meta.store_string(avatar_name + "\n" + str(name_color) + "\n" + image_path + "\n" + selected_base_path)
 	meta.close()
 
 	var current := FileAccess.open("res://data/current_avatar.txt", FileAccess.WRITE)
 	if current != null:
-		current.store_string(image_path + "\n" + avatar_name + "\n" + str(name_color))
+		current.store_string(image_path + "\n" + avatar_name + "\n" + str(name_color) + "\n" + selected_base_path)
 		current.close()
 
 	_write_avatar_manifest()

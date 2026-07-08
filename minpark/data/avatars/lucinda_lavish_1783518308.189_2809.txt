@@ -1,4 +1,4 @@
-res://data/avatars/lucinda_lavish_1783518308.189_2809.png
 Lucinda Lavish
 (0.058, 0.3906, 0.1879, 1.0)
+res://data/avatars/lucinda_lavish_1783518308.189_2809.png
 res://Lil Guys/lil guy base 2.png

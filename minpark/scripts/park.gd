@@ -6,6 +6,7 @@ extends Node2D
 
 func _ready() -> void:
 	randomize()
+	_apply_font_to_controls(self)
 	queue_redraw()
 	add_new_button.pressed.connect(_on_add_new_pressed)
 	var spawner := preload("res://scripts/park_characters.gd").new()
@@ -24,6 +25,15 @@ func _draw() -> void:
 		var x: float = randf_range(100, 1050)
 		var y: float = randf_range(90, 560)
 		draw_circle(Vector2(x, y), 8, Color(0.90, 0.84, 0.22))
+
+func _apply_font_to_controls(node: Node) -> void:
+	var font := load("res://Fonts/fusion-pixel-12px-monospaced-kr-latin-400-normal.ttf")
+	if node is Label:
+		(node as Label).add_theme_font_override("font", font)
+	elif node is Button:
+		(node as Button).add_theme_font_override("font", font)
+	for child in node.get_children():
+		_apply_font_to_controls(child)
 
 func _update_inhabitant_count() -> void:
 	var count := 0

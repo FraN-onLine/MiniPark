@@ -2,6 +2,8 @@
 
 [ext_resource type="Script" uid="uid://by0jfm1ywyd4i" path="res://scripts/avatar_creator.gd" id="1_abc123"]
 [ext_resource type="FontFile" uid="uid://b756xw4rae83v" path="res://Fonts/fusion-pixel-12px-monospaced-kr-latin-400-normal.ttf" id="2_keb0d"]
+[ext_resource type="Texture2D" uid="uid://bjncnl3ka4cqa" path="res://Lil Guys/lil guy base.png" id="3_pq1n8"]
+[ext_resource type="Texture2D" uid="uid://b1vtp3q7t4w5t" path="res://Lil Guys/lil guy base 2.png" id="4_vhdyl"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_d88xq"]
 bg_color = Color(1, 1, 1, 1)
@@ -132,6 +134,27 @@ layout_mode = 2
 [node name="CustomColorPicker" type="ColorPickerButton" parent="VBoxContainer/PaletteRow" unique_id=563025058]
 custom_minimum_size = Vector2(44, 32)
 layout_mode = 2
+
+[node name="BaseButtons" type="HBoxContainer" parent="VBoxContainer" unique_id=942178907]
+layout_mode = 2
+alignment = 1
+
+[node name="BaseLabel" type="Label" parent="VBoxContainer/BaseButtons" unique_id=1616168835]
+custom_minimum_size = Vector2(70, 0)
+layout_mode = 2
+text = "Base"
+
+[node name="BaseButton1" type="TextureButton" parent="VBoxContainer/BaseButtons" unique_id=620342990]
+custom_minimum_size = Vector2(96, 96)
+layout_mode = 2
+texture_normal = ExtResource("3_pq1n8")
+stretch_mode = 0
+
+[node name="BaseButton2" type="TextureButton" parent="VBoxContainer/BaseButtons" unique_id=689877708]
+custom_minimum_size = Vector2(96, 96)
+layout_mode = 2
+texture_normal = ExtResource("4_vhdyl")
+stretch_mode = 0
 
 [node name="StatusLabel" type="Label" parent="VBoxContainer" unique_id=201508109]
 layout_mode = 2
