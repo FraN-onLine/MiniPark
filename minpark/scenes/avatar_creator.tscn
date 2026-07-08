@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://c3rx3r26uhg1y"]
 
 [ext_resource type="Script" uid="uid://by0jfm1ywyd4i" path="res://scripts/avatar_creator.gd" id="1_abc123"]
+[ext_resource type="FontFile" uid="uid://b756xw4rae83v" path="res://Fonts/fusion-pixel-12px-monospaced-kr-latin-400-normal.ttf" id="2_keb0d"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_d88xq"]
 bg_color = Color(1, 1, 1, 1)
@@ -31,6 +32,7 @@ grow_vertical = 2
 
 [node name="Label" type="Label" parent="VBoxContainer" unique_id=1844952533]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("2_keb0d")
 text = "Draw your little buddy"
 horizontal_alignment = 1
 
@@ -163,3 +165,20 @@ offset_top = 73.0
 offset_right = 1138.0
 offset_bottom = 590.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_d88xq")
+
+[node name="Label" type="Label" parent="." unique_id=1472616481]
+layout_mode = 0
+offset_left = 913.0
+offset_top = 145.0
+offset_right = 1123.0
+offset_bottom = 569.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_keb0d")
+text = "Right click to Paint
+Left click to Erase
+
+Click on the swatch to set Color
+Click on the rightmost swatch to pick any color from the wheel
+
+Enter Park to view all citizens"
+autowrap_mode = 3
