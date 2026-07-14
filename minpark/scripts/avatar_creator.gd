@@ -4,6 +4,7 @@ extends Control
 @onready var status_label: Label = $VBoxContainer/StatusLabel
 @onready var clear_button: Button = $VBoxContainer/HBoxContainer/ClearButton
 @onready var save_button: Button = $VBoxContainer/HBoxContainer/SaveButton
+@onready var skip_button: Button = $VBoxContainer/HBoxContainer/SkipButton
 @onready var name_edit: LineEdit = $VBoxContainer/NameRow/NameEdit
 @onready var name_color_picker: ColorPickerButton = $VBoxContainer/ColorRow/NameColorPicker
 @onready var custom_color_picker: ColorPickerButton = $VBoxContainer/PaletteRow/CustomColorPicker
@@ -32,7 +33,7 @@ const BASE_2_PATH := "res://Lil Guys/lil guy base 2.png"
 
 var image: Image
 var base_image: Image
-var texture: ImageTexture
+var image_texture: ImageTexture
 
 var drawing := false
 var brush_color := Color.BLACK
@@ -60,6 +61,8 @@ func _ready():
 	_setup_scene_ui()
 	clear_button.pressed.connect(_on_clear_pressed)
 	save_button.pressed.connect(_on_save_pressed)
+	if skip_button != null:
+		skip_button.pressed.connect(_on_skip_pressed)
 
 	load_base_image()
 
@@ -132,8 +135,8 @@ func _update_base_button_state() -> void:
 func _make_button_texture(path: String, tint: Color) -> Texture2D:
 	var resource = load(path)
 	if resource is Texture2D:
-		var texture: Texture2D = resource as Texture2D
-		var img := texture.get_image().duplicate()
+		var tex2d: Texture2D = resource as Texture2D
+		var img := tex2d.get_image().duplicate()
 		img.convert(Image.FORMAT_RGBA8)
 		for y in range(img.get_height()):
 			for x in range(img.get_width()):
@@ -141,7 +144,15 @@ func _make_button_texture(path: String, tint: Color) -> Texture2D:
 				if c.a > 0.0:
 					img.set_pixel(x, y, Color(c.r * tint.r, c.g * tint.g, c.b * tint.b, c.a))
 		return ImageTexture.create_from_image(img)
-	return preload("res://Lil Guys/lil guy base.png")
+	# fallback: try loading image file directly
+	var img2 := Image.load_from_file(path)
+	if img2 != null and not img2.is_empty():
+		img2.convert(Image.FORMAT_RGBA8)
+		return ImageTexture.create_from_image(img2)
+	# final fallback: tiny blank texture
+	var blank := Image.create(16, 16, false, Image.FORMAT_RGBA8)
+	blank.fill(Color(1,1,1,1))
+	return ImageTexture.create_from_image(blank)
 
 func load_base_image():
 
@@ -172,9 +183,9 @@ func load_base_image():
 	base_image = loaded_image.duplicate()
 	image = loaded_image.duplicate()
 
-	texture = ImageTexture.create_from_image(image)
+	image_texture = ImageTexture.create_from_image(image)
 
-	preview.texture = texture
+	preview.texture = image_texture
 
 	preview.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
 
@@ -224,7 +235,7 @@ func paint(mouse_position:Vector2):
 		brush_color
 	)
 
-	texture.update(image)
+	image_texture.update(image)
 
 func _can_paint_pixel(pixel: Vector2i) -> bool:
 	if pixel.x < 0 or pixel.y < 0 or pixel.x >= IMAGE_SIZE or pixel.y >= IMAGE_SIZE:
@@ -250,11 +261,11 @@ func erase(mouse_position:Vector2):
 		Color.WHITE
 	)
 
-	texture.update(image)
+	image_texture.update(image)
 
 func mouse_to_pixel(mouse:Vector2)->Vector2i:
 
-	var size = preview.size
+	var rect_size = preview.size
 
 	if mouse.x < 0:
 		return Vector2i(-1,-1)
@@ -262,14 +273,14 @@ func mouse_to_pixel(mouse:Vector2)->Vector2i:
 	if mouse.y < 0:
 		return Vector2i(-1,-1)
 
-	if mouse.x >= size.x:
+	if mouse.x >= rect_size.x:
 		return Vector2i(-1,-1)
 
-	if mouse.y >= size.y:
+	if mouse.y >= rect_size.y:
 		return Vector2i(-1,-1)
 
-	var px = floor(mouse.x / size.x * IMAGE_SIZE)
-	var py = floor(mouse.y / size.y * IMAGE_SIZE)
+	var px = floor(mouse.x / rect_size.x * IMAGE_SIZE)
+	var py = floor(mouse.y / rect_size.y * IMAGE_SIZE)
 
 	return Vector2i(px,py)
 
@@ -381,3 +392,9 @@ func _write_avatar_manifest() -> void:
 		lines.append("%s|%s|%s" % [file_name, display_name, color_value])
 	manifest.store_string("\n".join(lines))
 	manifest.close()
+
+func _on_skip_pressed() -> void:
+	# Immediately enter the park without saving
+	status_label.text = "Skipping creation. Entering park..."
+	await get_tree().create_timer(0.3).timeout
+	get_tree().change_scene_to_file("res://scenes/park.tscn")

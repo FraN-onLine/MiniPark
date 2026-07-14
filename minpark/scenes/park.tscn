@@ -1,17 +1,34 @@
 [gd_scene format=3 uid="uid://s74mx22tx7ge"]
 
 [ext_resource type="Script" uid="uid://bupdidc7m4ov5" path="res://scripts/park.gd" id="1_park"]
-[ext_resource type="Texture2D" uid="uid://dgileaeix57nd" path="res://Lil Guys/BG.png" id="2_utnho"]
+[ext_resource type="Texture2D" uid="uid://bgwku32yewt65" path="res://Lil Guys/BG1.png" id="2_r2x14"]
 [ext_resource type="FontFile" uid="uid://b756xw4rae83v" path="res://Fonts/fusion-pixel-12px-monospaced-kr-latin-400-normal.ttf" id="3_7mjl7"]
+[ext_resource type="Texture2D" uid="uid://pife42w5mnua" path="res://Lil Guys/BG2.png" id="3_qbwbv"]
 [ext_resource type="StyleBox" uid="uid://ds4exmaanint7" path="res://bt.tres" id="4_r2x14"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qwc0f"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_r2x14")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_qbwbv")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 3.0
+}]
 
 [node name="Park" type="Node2D" unique_id=1248651913]
 script = ExtResource("1_park")
 
-[node name="Background" type="TextureRect" parent="." unique_id=1097572813]
-offset_right = 1152.0
-offset_bottom = 648.0
-texture = ExtResource("2_utnho")
+[node name="Background" type="AnimatedSprite2D" parent="." unique_id=1832541916]
+position = Vector2(576, 324)
+scale = Vector2(3.5999997, 3.5999997)
+sprite_frames = SubResource("SpriteFrames_qwc0f")
+autoplay = "default"
+frame_progress = 0.4793419
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=425050800]
 anchor_mode = 0

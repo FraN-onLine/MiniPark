@@ -1,4 +1,4 @@
-res://data/avatars/packet_tracer_1784025102.133_488.png
 Packet Tracer
 (1.0, 1.0, 1.0, 1.0)
+res://data/avatars/packet_tracer_1784025102.133_488.png
 res://Lil Guys/lil guy base.png

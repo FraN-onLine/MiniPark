@@ -1,0 +1,4 @@
+Dora
+(1.0, 1.0, 1.0, 1.0)
+res://data/avatars/dora_1784024355.005_5280.png
+res://Lil Guys/lil guy base 2.png

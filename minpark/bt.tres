@@ -1,8 +1,11 @@
 [gd_resource type="StyleBoxFlat" format=3 uid="uid://ds4exmaanint7"]
 
 [resource]
-bg_color = Color(0.57689285, 0.4218671, 0.18389314, 1)
+bg_color = Color(0.37450638, 0.26920384, 0.1034523, 1)
 corner_radius_top_left = 22
 corner_radius_top_right = 22
 corner_radius_bottom_right = 22
 corner_radius_bottom_left = 22
+shadow_color = Color(0.29867032, 0.06958165, 0.022456953, 0.7882353)
+shadow_size = 6
+shadow_offset = Vector2(1, 2)

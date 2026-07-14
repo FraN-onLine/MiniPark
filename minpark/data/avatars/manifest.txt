@@ -1,0 +1,3 @@
+avatar_manifest
+dora_1784024355.005_5280.png|Dora|(1.0, 1.0, 1.0, 1.0)
+packet_tracer_1784025102.133_488.png|Packet Tracer|(1.0, 1.0, 1.0, 1.0)
