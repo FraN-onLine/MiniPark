@@ -26,8 +26,13 @@ extends Control
 ]
 
 const IMAGE_SIZE := 16
-const SAVE_FOLDER := "res://data/avatars/"
-const MANIFEST_PATH := "res://data/avatars/manifest.txt"
+
+# NOTE: res:// is read-only in exported builds!
+# For saving avatars we must use user:// (writable in exports).
+# For loading base images we use load() + get_image() (works in exports).
+const SAVE_FOLDER := "user://data/avatars/"
+const MANIFEST_PATH := "user://data/avatars/manifest.txt"
+const CURRENT_AVATAR_PATH := "user://data/current_avatar.txt"
 const BASE_1_PATH := "res://Lil Guys/lil guy base.png"
 const BASE_2_PATH := "res://Lil Guys/lil guy base 2.png"
 
@@ -156,23 +161,44 @@ func _make_button_texture(path: String, tint: Color) -> Texture2D:
 
 func load_base_image():
 
-	var loaded_image = Image.load_from_file(selected_base_path)
+	# Use load() + get_image() instead of Image.load_from_file().
+	# In exported builds, PNGs are converted to GPU texture formats inside the PCK,
+	# so Image.load_from_file() fails. load() works because it uses Godot's resource system.
+	var base_texture: Texture2D = load(selected_base_path)
+	var loaded_image: Image = null
+
+	if base_texture != null:
+		loaded_image = base_texture.get_image()
+		if loaded_image != null:
+			loaded_image = loaded_image.duplicate()
+
+	# Fallback: try loading as raw file (works in editor, may fail in exports)
+	if loaded_image == null or loaded_image.is_empty():
+		loaded_image = Image.load_from_file(selected_base_path)
+
+	# Second fallback: try base 1 as a resource
+	if loaded_image == null or loaded_image.is_empty():
+		base_texture = load(BASE_1_PATH)
+		if base_texture != null:
+			loaded_image = base_texture.get_image()
+			if loaded_image != null:
+				loaded_image = loaded_image.duplicate()
+
+	# Third fallback: try loading base 1 as raw file
 	if loaded_image == null or loaded_image.is_empty():
 		loaded_image = Image.load_from_file(BASE_1_PATH)
 
+	# Final fallback: create a blank white image
 	if loaded_image == null or loaded_image.is_empty():
-
 		loaded_image = Image.create(
 			IMAGE_SIZE,
 			IMAGE_SIZE,
 			false,
 			Image.FORMAT_RGBA8
 		)
-
 		loaded_image.fill(Color.WHITE)
 
 	if loaded_image.get_width() != IMAGE_SIZE:
-
 		loaded_image.resize(
 			IMAGE_SIZE,
 			IMAGE_SIZE,
@@ -321,10 +347,11 @@ func _on_clear_pressed():
 
 func _on_save_pressed():
 
-	var dir := DirAccess.open("res://")
+	# user:// is the only writable location in exported builds
+	var dir := DirAccess.open("user://")
 
 	if dir == null:
-		status_label.text = "Couldn't access project folder."
+		status_label.text = "Couldn't access user folder."
 		return
 
 	dir.make_dir_recursive("data/avatars")
@@ -351,7 +378,7 @@ func _on_save_pressed():
 	meta.store_string(avatar_name + "\n" + str(name_color) + "\n" + image_path + "\n" + selected_base_path)
 	meta.close()
 
-	var current := FileAccess.open("res://data/current_avatar.txt", FileAccess.WRITE)
+	var current := FileAccess.open(CURRENT_AVATAR_PATH, FileAccess.WRITE)
 	if current != null:
 		current.store_string(image_path + "\n" + avatar_name + "\n" + str(name_color) + "\n" + selected_base_path)
 		current.close()
@@ -368,7 +395,7 @@ func _write_avatar_manifest() -> void:
 	var manifest := FileAccess.open(MANIFEST_PATH, FileAccess.WRITE)
 	if manifest == null:
 		return
-	var dir := DirAccess.open("res://data/avatars")
+	var dir := DirAccess.open("user://data/avatars")
 	if dir == null:
 		manifest.close()
 		return
@@ -378,7 +405,7 @@ func _write_avatar_manifest() -> void:
 	for file_name in files:
 		if not file_name.ends_with(".png"):
 			continue
-		var meta_path := "res://data/avatars/%s.txt" % file_name.get_basename()
+		var meta_path := "user://data/avatars/%s.txt" % file_name.get_basename()
 		var display_name := file_name.get_basename()
 		var color_value := ""
 		if FileAccess.file_exists(meta_path):

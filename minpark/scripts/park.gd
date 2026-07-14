@@ -41,7 +41,7 @@ func _update_inhabitant_count() -> void:
 	if spawner != null:
 		count = spawner.get_child_count()
 	else:
-		var dir := DirAccess.open("res://data/avatars")
+		var dir := DirAccess.open("user://data/avatars")
 		if dir != null:
 			for file_name in dir.get_files():
 				if file_name.ends_with(".png"):
@@ -50,14 +50,14 @@ func _update_inhabitant_count() -> void:
 
 func _update_avatar_list() -> void:
 	var lines: PackedStringArray = []
-	var dir := DirAccess.open("res://data/avatars")
+	var dir := DirAccess.open("user://data/avatars")
 	if dir != null:
 		var files := dir.get_files()
 		files.sort()
 		for file_name in files:
 			if not file_name.ends_with(".png"):
 				continue
-			var meta_path := "res://data/avatars/%s.txt" % file_name.get_basename()
+			var meta_path := "user://data/avatars/%s.txt" % file_name.get_basename()
 			var display_name := file_name.get_basename()
 			if FileAccess.file_exists(meta_path):
 				var meta_file := FileAccess.open(meta_path, FileAccess.READ)

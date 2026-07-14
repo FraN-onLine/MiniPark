@@ -1,7 +1,7 @@
 extends Node2D
 
-const AVATAR_FOLDER := "res://data/avatars/"
-const CURRENT_FILE := "res://data/current_avatar.txt"
+const AVATAR_FOLDER := "user://data/avatars/"
+const CURRENT_FILE := "user://data/current_avatar.txt"
 
 var spawned := false
 
@@ -11,7 +11,7 @@ func _ready() -> void:
 func spawn_saved_characters() -> void:
 	if spawned:
 		return
-	var dir := DirAccess.open("res://data/avatars")
+	var dir := DirAccess.open("user://data/avatars")
 	if dir == null:
 		return
 	var files := dir.get_files()

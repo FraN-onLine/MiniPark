@@ -96,7 +96,7 @@ func _parse_color(value: String) -> Color:
 	return Color(trimmed)
 
 func load_avatar_name() -> void:
-	var metadata_path: String = "res://data/current_avatar.txt"
+	var metadata_path: String = "user://data/current_avatar.txt"
 	if has_meta("meta_path"):
 		metadata_path = get_meta("meta_path")
 	var display_name: String = "Buddy"
@@ -122,8 +122,8 @@ func load_avatar_name() -> void:
 	name_label.modulate = name_color
 
 func load_avatar_texture() -> void:
-	var image_path: String = "res://data/avatar.png"
-	var metadata_path: String = "res://data/current_avatar.txt"
+	var image_path: String = "user://data/avatar.png"
+	var metadata_path: String = "user://data/current_avatar.txt"
 	if has_meta("meta_path"):
 		metadata_path = get_meta("meta_path")
 	if FileAccess.file_exists(metadata_path):
@@ -139,8 +139,13 @@ func load_avatar_texture() -> void:
 	if FileAccess.file_exists(image_path):
 		image = Image.load_from_file(image_path)
 	else:
-		image = Image.load_from_file("res://Lil Guys/lil guy base.png")
-	if image.is_empty():
+		# Use load() to get base fallback image — works in exports unlike Image.load_from_file()
+		var base_texture: Texture2D = load("res://Lil Guys/lil guy base.png")
+		if base_texture != null:
+			image = base_texture.get_image()
+			if image != null:
+				image = image.duplicate()
+	if image == null or image.is_empty():
 		image = Image.create(16, 16, false, Image.FORMAT_RGBA8)
 		image.fill(Color.WHITE)
 	if image.get_width() != 16 or image.get_height() != 16:

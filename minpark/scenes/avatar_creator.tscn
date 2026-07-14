@@ -203,6 +203,7 @@ offset_right = 1123.0
 offset_bottom = 569.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("2_keb0d")
+theme_override_font_sizes/font_size = 24
 text = "Right click to Paint
 Left click to Erase
 
@@ -210,4 +211,16 @@ Click on the swatch to set Color
 Click on the rightmost swatch to pick any color from the wheel
 
 Enter Park to view all citizens"
+autowrap_mode = 3
+
+[node name="Label2" type="Label" parent="." unique_id=1139517231]
+layout_mode = 0
+offset_left = 936.0
+offset_top = 93.0
+offset_right = 1086.0
+offset_bottom = 144.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_keb0d")
+theme_override_font_sizes/font_size = 24
+text = "Instructions"
 autowrap_mode = 3
