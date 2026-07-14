@@ -1,0 +1,4 @@
+FRUITYLOOPS
+(0.4748, 0.0, 0.7868, 1.0)
+res://data/avatars/fruityloops_1783665454.6_7225.png
+res://Lil Guys/lil guy base.png

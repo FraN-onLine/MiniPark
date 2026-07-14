@@ -1,0 +1,4 @@
+NythRina
+(0.928, 0.023, 0.023, 1.0)
+res://data/avatars/nyth_rina_1783660901.244_619.png
+res://Lil Guys/lil guy base.png

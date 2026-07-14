@@ -1,0 +1,4 @@
+kei lawliet
+(0.1831, 1.0, 0.0, 1.0)
+res://data/avatars/kei_lawliet_1783670589.791_833.png
+res://Lil Guys/lil guy base.png

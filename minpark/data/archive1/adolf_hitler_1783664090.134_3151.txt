@@ -1,0 +1,4 @@
+Adolf Hitler
+(1.0, 0.0, 0.0, 1.0)
+res://data/avatars/adolf_hitler_1783664090.134_3151.png
+res://Lil Guys/lil guy base.png

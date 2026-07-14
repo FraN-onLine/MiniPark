@@ -1,0 +1,4 @@
+ZOHANEK
+(18.8922, 18.8922, 18.8922, 1.0)
+res://data/avatars/zohanek_1783666375.146_6746.png
+res://Lil Guys/lil guy base.png

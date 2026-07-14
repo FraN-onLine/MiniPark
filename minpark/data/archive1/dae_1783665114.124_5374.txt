@@ -1,0 +1,4 @@
+dae
+(0.0276, 0.4319, 0.9145, 1.0)
+res://data/avatars/dae_1783665114.124_5374.png
+res://Lil Guys/lil guy base.png

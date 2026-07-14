@@ -1,0 +1,4 @@
+jelly
+(0.6211, 0.0458, 0.2211, 1.0)
+res://data/avatars/jelly_1783663751.775_3130.png
+res://Lil Guys/lil guy base 2.png

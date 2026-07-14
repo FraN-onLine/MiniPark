@@ -2,6 +2,8 @@
 
 [ext_resource type="Script" uid="uid://bupdidc7m4ov5" path="res://scripts/park.gd" id="1_park"]
 [ext_resource type="Texture2D" uid="uid://dgileaeix57nd" path="res://Lil Guys/BG.png" id="2_utnho"]
+[ext_resource type="FontFile" uid="uid://b756xw4rae83v" path="res://Fonts/fusion-pixel-12px-monospaced-kr-latin-400-normal.ttf" id="3_7mjl7"]
+[ext_resource type="StyleBox" uid="uid://ds4exmaanint7" path="res://bt.tres" id="4_r2x14"]
 
 [node name="Park" type="Node2D" unique_id=1248651913]
 script = ExtResource("1_park")
@@ -21,7 +23,11 @@ offset_left = 14.0
 offset_top = 13.0
 offset_right = 144.0
 offset_bottom = 44.0
+theme_override_fonts/font = ExtResource("3_7mjl7")
 theme_override_font_sizes/font_size = 16
+theme_override_styles/normal = ExtResource("4_r2x14")
+theme_override_styles/pressed = ExtResource("4_r2x14")
+theme_override_styles/hover = ExtResource("4_r2x14")
 text = "Add New"
 
 [node name="InhabitantsLabel" type="Label" parent="CanvasLayer" unique_id=365269418]

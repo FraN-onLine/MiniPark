@@ -1,0 +1,4 @@
+TRUMP
+(1.0, 1.0, 1.0, 1.0)
+res://data/avatars/trump_1783661246.666_3725.png
+res://Lil Guys/lil guy base.png

@@ -1,0 +1,4 @@
+JEFFREY DAHMER
+(1.0, 1.0, 1.0, 1.0)
+res://data/avatars/jeffrey_dahmer_1783666240.602_1103.png
+res://Lil Guys/lil guy base.png

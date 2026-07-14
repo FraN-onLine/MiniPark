@@ -1,0 +1,4 @@
+LIMUEL MAQUE
+(1.0, 1.0, 1.0, 1.0)
+res://data/avatars/limuel_maque_1783670527.431_8117.png
+res://Lil Guys/lil guy base.png

@@ -1,0 +1,4 @@
+ti
+(0.9769, 0.2313, 0.3492, 1.0)
+res://data/avatars/ti_1783667117.806_5797.png
+res://Lil Guys/lil guy base.png

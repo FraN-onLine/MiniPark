@@ -1,0 +1,4 @@
+angel b.
+(1.0, 1.0, 1.0, 1.0)
+res://data/avatars/angel_b._1783669526.04_5070.png
+res://Lil Guys/lil guy base 2.png

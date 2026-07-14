@@ -1,0 +1,4 @@
+Pinky
+(0.9851, 0.4413, 0.0, 1.0)
+res://data/avatars/pinky_1783663647.437_304.png
+res://Lil Guys/lil guy base 2.png

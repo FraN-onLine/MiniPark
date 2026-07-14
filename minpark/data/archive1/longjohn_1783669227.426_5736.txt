@@ -1,0 +1,4 @@
+longjohn
+(1.0, 0.0, 0.0, 1.0)
+res://data/avatars/longjohn_1783669227.426_5736.png
+res://Lil Guys/lil guy base 2.png

@@ -1,0 +1,4 @@
+FREIRAN
+(1.0, 1.0, 1.0, 1.0)
+res://data/avatars/freiran_1783671736.553_1483.png
+res://Lil Guys/lil guy base 2.png

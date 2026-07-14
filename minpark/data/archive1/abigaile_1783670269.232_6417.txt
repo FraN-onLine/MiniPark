@@ -1,0 +1,4 @@
+abigaile
+(1.0, 1.0, 1.0, 1.0)
+res://data/avatars/abigaile_1783670269.232_6417.png
+res://Lil Guys/lil guy base 2.png

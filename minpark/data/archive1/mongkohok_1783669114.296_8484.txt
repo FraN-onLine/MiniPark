@@ -1,0 +1,4 @@
+mongkohok
+(1.0, 1.0, 1.0, 1.0)
+res://data/avatars/mongkohok_1783669114.296_8484.png
+res://Lil Guys/lil guy base.png

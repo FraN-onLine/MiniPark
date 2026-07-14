@@ -1,0 +1,4 @@
+Denis
+(0.8764, 0.5612, 0.2694, 1.0)
+res://data/avatars/denis_1783667691.368_8266.png
+res://Lil Guys/lil guy base.png

@@ -1,0 +1,4 @@
+Blackie-Chan
+(1.0, 1.0, 1.0, 1.0)
+res://data/avatars/blackie_chan_1783660574.125_3394.png
+res://Lil Guys/lil guy base.png

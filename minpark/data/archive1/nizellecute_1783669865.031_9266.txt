@@ -1,0 +1,4 @@
+nizellecute
+(1.0, 1.0, 1.0, 1.0)
+res://data/avatars/nizellecute_1783669865.031_9266.png
+res://Lil Guys/lil guy base 2.png

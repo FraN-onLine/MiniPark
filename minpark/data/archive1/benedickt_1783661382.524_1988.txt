@@ -1,0 +1,4 @@
+Benedickt
+(1.0, 1.0, 1.0, 1.0)
+res://data/avatars/benedickt_1783661382.524_1988.png
+res://Lil Guys/lil guy base.png

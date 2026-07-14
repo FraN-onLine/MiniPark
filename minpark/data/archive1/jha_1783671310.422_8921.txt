@@ -1,0 +1,4 @@
+JHA
+(1.0, 1.0, 1.0, 1.0)
+res://data/avatars/jha_1783671310.422_8921.png
+res://Lil Guys/lil guy base 2.png

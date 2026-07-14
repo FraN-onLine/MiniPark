@@ -1,0 +1,4 @@
+Panini
+(1.0, 1.0, 1.0, 1.0)
+res://data/avatars/panini_1783661920.985_8640.png
+res://Lil Guys/lil guy base.png

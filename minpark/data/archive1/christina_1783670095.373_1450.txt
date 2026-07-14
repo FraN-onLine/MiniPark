@@ -1,0 +1,4 @@
+christina
+(1.0, 1.0, 1.0, 1.0)
+res://data/avatars/christina_1783670095.373_1450.png
+res://Lil Guys/lil guy base 2.png

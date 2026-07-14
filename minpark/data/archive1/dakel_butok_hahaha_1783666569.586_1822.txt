@@ -1,0 +1,4 @@
+DAKEL BUTOK HAHAHA
+(0.6727, 0.077, 0.077, 1.0)
+res://data/avatars/dakel_butok_hahaha_1783666569.586_1822.png
+res://Lil Guys/lil guy base.png

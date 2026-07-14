@@ -1,0 +1,4 @@
+Jeff
+(0.0687, 0.3677, 0.6809, 1.0)
+res://data/avatars/jeff_1783670372.039_7925.png
+res://Lil Guys/lil guy base.png

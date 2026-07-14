@@ -1,4 +1,4 @@
-res://data/avatars/buddy_1784024091.414_4133.png
 Buddy
 (1.0, 1.0, 1.0, 1.0)
+res://data/avatars/buddy_1783521312.745_6790.png
 res://Lil Guys/lil guy base.png

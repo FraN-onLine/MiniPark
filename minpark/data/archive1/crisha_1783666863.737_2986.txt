@@ -1,0 +1,4 @@
+Crisha
+(0.5994, 0.0784, 0.5513, 1.0)
+res://data/avatars/crisha_1783666863.737_2986.png
+res://Lil Guys/lil guy base 2.png

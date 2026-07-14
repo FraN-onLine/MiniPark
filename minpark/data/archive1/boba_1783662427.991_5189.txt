@@ -1,0 +1,4 @@
+Boba
+(1.0, 1.0, 1.0, 1.0)
+res://data/avatars/boba_1783662427.991_5189.png
+res://Lil Guys/lil guy base.png

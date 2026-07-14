@@ -1,0 +1,4 @@
+Chibi Uma
+(0.7255, 0.4549, 1.0, 1.0)
+res://data/avatars/chibi_uma_1783661502.416_1714.png
+res://Lil Guys/lil guy base.png

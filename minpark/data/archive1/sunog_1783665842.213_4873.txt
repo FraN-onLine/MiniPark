@@ -1,0 +1,4 @@
+\SUNOG
+(0.2824, 0.0078, 0.0078, 1.0)
+res://data/avatars/\sunog_1783665842.213_4873.png
+res://Lil Guys/lil guy base.png

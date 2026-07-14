@@ -1,0 +1,4 @@
+Raf
+(0.4208, 0.2457, 0.9606, 1.0)
+res://data/avatars/raf_1783671891.778_404.png
+res://Lil Guys/lil guy base.png

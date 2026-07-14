@@ -1,0 +1,4 @@
+JRDS
+(1.0, 1.0, 1.0, 1.0)
+res://data/avatars/jrds_1783668534.705_6798.png
+res://Lil Guys/lil guy base.png

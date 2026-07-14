@@ -1,0 +1,4 @@
+LEBRON
+(1.0, 1.0, 1.0, 1.0)
+res://data/avatars/lebron_1783660829.66_8254.png
+res://Lil Guys/lil guy base.png

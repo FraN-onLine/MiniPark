@@ -1,0 +1,4 @@
+DANDEL
+(0.0, 0.8357, 0.6913, 1.0)
+res://data/avatars/dandel_1783665524.184_1781.png
+res://Lil Guys/lil guy base.png

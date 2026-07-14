@@ -1,0 +1,4 @@
+je
+(0.8588, 0.9451, 0.3647, 1.0)
+res://data/avatars/je_1783663964.281_4578.png
+res://Lil Guys/lil guy base 2.png

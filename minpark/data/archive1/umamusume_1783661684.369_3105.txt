@@ -1,0 +1,4 @@
+Umamusume
+(1.0, 0.1647, 0.102, 1.0)
+res://data/avatars/umamusume_1783661684.369_3105.png
+res://Lil Guys/lil guy base.png

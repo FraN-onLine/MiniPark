@@ -1,0 +1,4 @@
+Sheen Estevez
+(1.0, 1.0, 1.0, 1.0)
+res://data/avatars/sheen_estevez_1783665351.658_7711.png
+res://Lil Guys/lil guy base.png

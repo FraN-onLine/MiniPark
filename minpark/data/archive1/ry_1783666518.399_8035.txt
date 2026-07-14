@@ -1,0 +1,4 @@
+RY
+(1.0, 1.0, 1.0, 1.0)
+res://data/avatars/ry_1783666518.399_8035.png
+res://Lil Guys/lil guy base.png

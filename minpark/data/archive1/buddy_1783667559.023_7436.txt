@@ -1,0 +1,4 @@
+Buddy
+(0.3577, 0.1749, 0.0244, 1.0)
+res://data/avatars/buddy_1783667559.023_7436.png
+res://Lil Guys/lil guy base.png

@@ -1,0 +1,4 @@
+BabyLath
+(0.8656, 0.2426, 0.8589, 1.0)
+res://data/avatars/baby_lath_1783672536.246_3919.png
+res://Lil Guys/lil guy base.png

@@ -1,0 +1,4 @@
+MechetQT
+(0.9824, 0.9747, 0.9667, 1.0)
+res://data/avatars/mechet_qt_1783668442.322_2188.png
+res://Lil Guys/lil guy base.png

@@ -1,0 +1,4 @@
+Miku
+(0.0547, 0.0283, 0.431, 1.0)
+res://data/avatars/miku_1783670038.292_1779.png
+res://Lil Guys/lil guy base 2.png

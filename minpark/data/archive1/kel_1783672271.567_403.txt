@@ -1,0 +1,4 @@
+Kel
+(1.0, 1.0, 1.0, 1.0)
+res://data/avatars/kel_1783672271.567_403.png
+res://Lil Guys/lil guy base.png

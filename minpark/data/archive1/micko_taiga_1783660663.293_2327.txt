@@ -1,0 +1,4 @@
+Micko Taiga
+(1.0, 1.0, 1.0, 1.0)
+res://data/avatars/micko_taiga_1783660663.293_2327.png
+res://Lil Guys/lil guy base 2.png

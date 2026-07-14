@@ -1,0 +1,4 @@
+pelepens
+(1.0, 1.0, 1.0, 1.0)
+res://data/avatars/pelepens_1783670635.401_4461.png
+res://Lil Guys/lil guy base.png

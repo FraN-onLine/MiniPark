@@ -1,0 +1,4 @@
+FREIREN
+(0.5656, 1.0, 0.9532, 1.0)
+res://data/avatars/freiren_1783668579.947_5038.png
+res://Lil Guys/lil guy base 2.png

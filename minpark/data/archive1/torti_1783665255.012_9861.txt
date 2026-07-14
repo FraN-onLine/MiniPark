@@ -1,0 +1,4 @@
+torti
+(1.0, 1.0, 1.0, 1.0)
+res://data/avatars/torti_1783665255.012_9861.png
+res://Lil Guys/lil guy base.png

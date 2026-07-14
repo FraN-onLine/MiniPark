@@ -1,0 +1,4 @@
+MR.Peppermint
+(1.0, 1.0, 1.0, 1.0)
+res://data/avatars/mr.peppermint_1783661183.09_4931.png
+res://Lil Guys/lil guy base.png

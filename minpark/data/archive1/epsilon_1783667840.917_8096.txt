@@ -1,0 +1,4 @@
+Epsilon
+(1.0, 1.0, 1.0, 1.0)
+res://data/avatars/epsilon_1783667840.917_8096.png
+res://Lil Guys/lil guy base.png
